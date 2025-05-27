@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning log</title>
+</head>
+<body>
+    <p>
+        <a href="{% url 'learning_logs:index' %}">Learning log </a>
+        <a href="{% url 'learning_logs:topics' %}">Topics</a>
+        {% if user.is_authenticated %}
+            <p>Hello {{ user.email }}</p>
+            <a href="{% url 'logout' %}">Выйти</a>
+        {% else %}
+            <a href="{% url 'register' %}">Регистрация</a>
+            <a href="{% url 'login' %}">Вход</a>
+        {% endif %}
+    </p>
+    {% block content %}{% endblock content %}
+</body>
+</html>
